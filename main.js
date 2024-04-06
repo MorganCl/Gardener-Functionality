@@ -118,103 +118,7 @@ window.onload = () => {
         xhttp.send();
     };
 
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("water").innerHTML = this.responseText;
-                if (this.responseText == "Pumping") {
-                    document.getElementById("water").parentElement.classList.add("active");
-                } else {
-                    document.getElementById("water").parentElement.classList.remove("active");
-                }
-            }
-        };
-        xhttp.open("GET", "/pumpc", true);
-        xhttp.send();
-    }, 2000);
-
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("heat_mat").innerHTML = this.responseText;
-                if (this.responseText == "Heating") {
-                    document.getElementById("heat_mat").parentElement.classList.add("active");
-                } else {
-                    document.getElementById("heat_mat").parentElement.classList.remove("active");
-                }
-            }
-        };
-        xhttp.open("GET", "/heat_mat", true);
-        xhttp.send();
-    }, 2000);
-
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("voltage").innerHTML = this.responseText + "V";
-            }
-        };
-        xhttp.open("GET", "/voltage", true);
-        xhttp.send();
-    }, 2000);
-
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("current").innerHTML = this.responseText + "A";
-            }
-        };
-        xhttp.open("GET", "/current", true);
-        xhttp.send();
-    }, 2000);
-
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("cost").innerHTML = "£" + this.responseText;
-            }
-        };
-        xhttp.open("GET", "/cost_per_day", true);
-        xhttp.send();
-    }, 2000);
-
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("total_cost").innerHTML = "£" + this.responseText;
-            }
-        };
-        xhttp.open("GET", "/total_cost", true);
-        xhttp.send();
-    }, 2000);
-
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("power").innerHTML = this.responseText + "W";
-            }
-        };
-        xhttp.open("GET", "/power", true);
-        xhttp.send();
-    }, 2000);
-
-    setInterval(() => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("pf").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "/pf", true);
-        xhttp.send();
-    }, 2000);
+    
 
     function add(accumulator, a) {
         return accumulator + a;
@@ -290,22 +194,4 @@ window.onload = () => {
 
     get_temp();
     update_weather();
-}
-
-function togglePump() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {}
-    };
-    xhttp.open("GET", "/pumpctog", true);
-    xhttp.send();
-}
-
-function toggleHeatMat() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {}
-    };
-    xhttp.open("GET", "/heat_mattog", true);
-    xhttp.send();
 }
