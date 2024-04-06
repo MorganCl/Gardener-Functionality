@@ -95,7 +95,8 @@ window.onload = () => {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("tempActual").innerHTML = this.responseText;
+                document.getElementById("tempActual").innerHTML = this.responseText.split(",")[0];
+                document.getElementById("humidityActual").innerHTML = this.responseText.split(",")[1];
             }
         }
         xhttp.open("GET", "/temp", true);
@@ -107,7 +108,7 @@ window.onload = () => {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 ds = this.responseText;
-                dataset = ds.split(",");
+                dataset = ds.split(",").split(",")[0];
                 temp_chart.data.datasets[0].data = dataset;
                 temp_chart.update();
                 setTimeout(get_temp, 1000 * 60)
