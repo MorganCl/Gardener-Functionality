@@ -108,6 +108,7 @@ window.onload = () => {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 ds = this.responseText;
+				console.log(ds);
                 dataset = ds.split(",").split(",")[0];
                 temp_chart.data.datasets[0].data = dataset;
                 temp_chart.update();
